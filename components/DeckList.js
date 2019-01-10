@@ -1,10 +1,36 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { Component } from 'react'
+import { View, Text, FlatList} from 'react-native'
+import { connect } from 'react-redux'
 
-export default function DeckList () {
-  return (
-    <View>
-      <Text>DeckList</Text>
-    </View>
-  )
+class DeckList extends Component {
+
+  _keyExtractor = (item, index) => item.id
+
+  _renderItem = ({item, index}) => {
+    return (
+      <View>
+        <Text>{item.title}</Text>
+      </View>
+    )
+  }
+
+  render(){
+    return (
+      <View style={{flex: 1}}>
+        <FlatList
+          data={this.props.decks}
+          keyExtractor={this._keyExtractor}
+          renderItem={this._renderItem}
+        />
+      </View>
+    )
+  }
 }
+
+function mapStateToProps({decks}) {
+  return {
+    decks
+  }
+}
+
+export default connect(mapStateToProps)(DeckList)
