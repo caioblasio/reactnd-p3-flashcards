@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { View, Text, FlatList} from 'react-native'
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
+
+import { purple, gray, white } from '../utils/colors'
 
 class DeckList extends Component {
 
@@ -8,15 +10,16 @@ class DeckList extends Component {
 
   _renderItem = ({item, index}) => {
     return (
-      <View>
-        <Text>{item.title}</Text>
+      <View style={[styles.item, { backgroundColor: bgColors[index % 2] }]}>
+        <Text style={styles.itemTitle}>{item.title}</Text>
+        <Text style={styles.itemQuestionQty}>{item.questions.length} cards</Text>
       </View>
     )
   }
 
   render(){
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.container}>
         <FlatList
           data={this.props.decks}
           keyExtractor={this._keyExtractor}
@@ -26,6 +29,27 @@ class DeckList extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  item: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 160,
+  },
+  itemTitle: {
+    fontSize: 30,
+    color: white,
+  },
+  itemQuestionQty: {
+    fontSize: 20,
+    color: white,
+  }
+})
+
+const bgColors = [purple, gray]
 
 function mapStateToProps({decks}) {
   return {
