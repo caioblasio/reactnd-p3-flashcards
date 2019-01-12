@@ -17,7 +17,7 @@ const RouteConfigs = {
     screen: AddDeckNavigation,
     navigationOptions: {
       tabBarLabel: "Add Deck",
-      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
+      tabBarIcon: ({ tintColor }) => <Ionicons name='ios-add-circle' size={30} color={tintColor} />
     }
   }
 }

@@ -2,18 +2,21 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 
-import { purple, gray, white } from '../utils/colors'
+import { bgColors, purple, gray, white } from '../../utils/colors'
 
 class DeckList extends Component {
 
   _keyExtractor = (item, index) => item.id
 
   _renderItem = ({item, index}) => {
+    const { navigation } = this.props
     return (
-      <View style={[styles.item, { backgroundColor: bgColors[index % 2] }]}>
-        <Text style={styles.itemTitle}>{item.title}</Text>
-        <Text style={styles.itemQuestionQty}>{item.questions.length} cards</Text>
-      </View>
+      <TouchableOpacity onPress={()=> navigation.navigate('DeckView', {index : index, id : item.id, title: item.title})} >
+        <View style={[styles.item, { backgroundColor: bgColors[index % 2] }]}>
+          <Text style={styles.itemTitle}>{item.title}</Text>
+          <Text style={styles.itemQuestionQty}>{item.questions.length} cards</Text>
+        </View>
+      </TouchableOpacity>
     )
   }
 
@@ -49,7 +52,7 @@ const styles = StyleSheet.create({
   }
 })
 
-const bgColors = [purple, gray]
+
 
 function mapStateToProps({decks}) {
   return {
