@@ -1,18 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native'
-import { bgColors, purple, white } from '../../../utils/colors'
+import { green, red } from '../../../utils/colors'
 import { Ionicons } from '@expo/vector-icons'
-import FlipCard from 'react-native-flip-card'
-
-function AnswerBtn ({ onPress, text, bgColor }) {
-  return (
-    <TouchableOpacity
-      style={[styles.answerBtn, { backgroundColor: bgColor }]}
-      onPress={onPress}>
-        <Text style={styles.answerBtnText}>{text}</Text>
-    </TouchableOpacity>
-  )
-}
+import TextButton from '../../TextButton'
 
 class QuestionCard extends Component {
 
@@ -65,7 +55,7 @@ class QuestionCard extends Component {
   }
 
   render(){
-    const { questionItem, show } = this.props
+    const { questionItem, show, color } = this.props
 
     const frontAnimatedStyle = {
       transform: [
@@ -85,33 +75,43 @@ class QuestionCard extends Component {
       <View style={styles.container}>
         <View>
         <TouchableOpacity onPress={() => this.flip()}>
-          <Animated.View style={[styles.flipCard, frontAnimatedStyle]}>
+          <Animated.View style={[styles.flipCard, frontAnimatedStyle, { borderColor: color }]}>
             <Text style={styles.titleText}>{questionItem.question}</Text>
-            <View>
+            <View style={styles.bottomBtn}>
               <Ionicons 
                 name="ios-sync"
-                size={100}
-                color={purple}
+                size={40}
+                color={color}
               />
-              <Text>Show Answer</Text>
+              <Text style={[styles.bottomBtnText, { color }]}>Show Answer</Text>
             </View>
           </Animated.View>
-          <Animated.View style={[backAnimatedStyle, styles.flipCard, styles.flipCardBack]}>
+          <Animated.View style={[backAnimatedStyle, styles.flipCard, styles.flipCardBack, { borderColor: color }]}>
             <Text style={styles.titleText}>{questionItem.answer}</Text>
             {this.state.isFlipped && 
             <View>
-              <AnswerBtn 
+              <TextButton 
                 onPress={() => {this.onAnswerPress('correct')}}
-                bgColor="green"
-                text="Correct"
-              />
-              <AnswerBtn 
+                style={[styles.row, { backgroundColor: green }]}
+              >
+              Correct
+              </TextButton>
+              <TextButton
                 onPress={() => {this.onAnswerPress('incorrect')}}
-                bgColor="red"
-                text="incorrect"
-              />
+                style={[styles.row, { backgroundColor: red }]}
+              >
+              Incorrect
+              </TextButton>
             </View>
             }
+            <View style={styles.bottomBtn}>
+              <Ionicons 
+                name="ios-sync"
+                size={40}
+                color={color}
+              />
+              <Text style={[styles.bottomBtnText, { color }]}>Show Question</Text>
+            </View>
           </Animated.View>
           </TouchableOpacity>
         </View>
@@ -125,14 +125,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  row: {
+    marginTop: 25,
+  },
   flipCard: {
     padding: 30,
-    borderColor: purple,
     borderWidth: 2,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
     backfaceVisibility: 'hidden',
+    height: 420
   },
   flipCardBack: {
     position: "absolute",
@@ -147,18 +150,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  answerBtn: {
-    padding: 10,
-    borderRadius: 7,
-    height: 45,
-    marginLeft: 40,
-    marginRight: 40,
-    marginTop: 25,
+  bottomBtn: {
+    flex: 1,
+    position: 'absolute',
+    bottom: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
   },
-  answerBtnText: {
-    color: white,
+  bottomBtnText: {
     fontSize: 20,
-    textAlign: 'center',
+    marginLeft: 5,
   },
 })
 

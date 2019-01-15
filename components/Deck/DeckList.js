@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
 
-import { bgColors, purple, gray, white } from '../../utils/colors'
+import { bgColors, white } from '../../utils/colors'
 
 class DeckList extends Component {
 
@@ -12,7 +12,7 @@ class DeckList extends Component {
     const { navigation } = this.props
     return (
       <TouchableOpacity onPress={()=> navigation.navigate('DeckView', {index : index, id : item.id, title: item.title})} >
-        <View style={[styles.item, { backgroundColor: bgColors[index % 2] }]}>
+        <View style={[styles.item, { backgroundColor: bgColors[index % 4] }]}>
           <Text style={styles.itemTitle}>{item.title}</Text>
           <Text style={styles.itemQuestionQty}>{item.questions.length} cards</Text>
         </View>
@@ -51,8 +51,6 @@ const styles = StyleSheet.create({
     color: white,
   }
 })
-
-
 
 function mapStateToProps({decks}) {
   return {

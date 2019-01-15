@@ -1,19 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import uuidv4 from 'uuid/v4'
 import { addDeck } from '../actions/decks'
-import { purple , white } from '../utils/colors'
-
-function SubmitBtn ({ onPress }) {
-  return (
-    <TouchableOpacity
-      style={styles.submitBtn}
-      onPress={onPress}>
-        <Text style={styles.submitBtnText}>SUBMIT</Text>
-    </TouchableOpacity>
-  )
-}
+import { purple, black } from '../utils/colors'
+import TextButton from './TextButton'
 
 class NewDeck extends Component {
 
@@ -24,7 +15,7 @@ class NewDeck extends Component {
   submit = () => {
     
     const { title } = this.state
-    const { addDeck, navigation } = this.props
+    const { addDeck, navigation, deckCount } = this.props
 
     if (title.length === 0) {
       alert('Please fill title field')
@@ -34,7 +25,7 @@ class NewDeck extends Component {
     const deck = {id : uuidv4(), title : title, questions: []}
     addDeck(deck)
     this.reset()
-    //navigation.navigate('DeckViewScreen', {id: deck.id, title: deck.title})
+    navigation.navigate('DeckView', { index: deckCount, id: deck.id, title: deck.title })
   }
 
   reset = () => {
@@ -57,7 +48,11 @@ class NewDeck extends Component {
             value={this.state.title}
           />
         </View>
-        <SubmitBtn onPress={this.submit}/>
+        <View style={styles.row}>
+          <TextButton onPress={this.submit} style={{backgroundColor: purple}}>
+            SUBMIT
+          </TextButton>
+        </View>
       </View>
     )
   }
@@ -76,28 +71,20 @@ const styles = StyleSheet.create({
     lineHeight: 40,
   },
   textInput: {
-    borderColor: purple,
+    borderColor: black,
     borderWidth: 1,
     height: 50,
     paddingLeft: 5,
     borderRadius: 7,
     marginBottom: 0
   },
-  submitBtn: {
-    backgroundColor: purple,
-    padding: 10,
-    borderRadius: 7,
-    height: 45,
-    marginLeft: 40,
-    marginRight: 40,
-    marginTop: 25,
-  },
-  submitBtnText: {
-    color: white,
-    fontSize: 20,
-    textAlign: 'center',
-  },
 })
+
+function mapStateToProps({ decks }) {
+  return {
+    deckCount: decks.length
+  }
+}
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -105,4 +92,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(null, mapDispatchToProps)(NewDeck)
+export default connect(mapStateToProps, mapDispatchToProps)(NewDeck)

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import { bgColors, purple, white } from '../../utils/colors'
+import { bgColors, black } from '../../utils/colors'
 import * as Progress from 'react-native-progress';
 import QuestionCard from './QuizComponents/QuestionCard'
+import QuizScore from './QuizComponents/QuizScore'
 
 class Quiz extends Component {
 
@@ -18,7 +19,7 @@ class Quiz extends Component {
     return {
       title: 'Quiz',
       headerStyle: {
-        backgroundColor: bgColors[index % 2],
+        backgroundColor: bgColors[index % 4],
       }
     }
   }
@@ -48,24 +49,23 @@ class Quiz extends Component {
   render(){
     const { questions, currentQuestion, totalQuestions, correctAnswers } = this.state
     const { navigation } = this.props
+    const color = bgColors[navigation.state.params.index % 4]
     return(
       <View style={styles.container}>
         {currentQuestion === totalQuestions
           ? (
-            <View style={{flex: 1}}>
-              <Text>Resultado: {Math.round(correctAnswers/totalQuestions * 100).toFixed(2)}</Text>
-              <TouchableOpacity onPress={() => {this.onRestartQuiz()}}>
-                <Text>Restart Quiz</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {navigation.goBack()}}>
-                <Text>Back to Deck</Text>
-              </TouchableOpacity>
-            </View>
+            <QuizScore
+              correctAnswers={correctAnswers}
+              totalQuestions={totalQuestions}
+              navigation={navigation}
+              onRestartQuiz={this.onRestartQuiz}
+              color={color}
+            />
           ) : (
             <View style={{flex: 1}}>
               <View style={styles.progressContainer}>
-                <Text style={styles.progressText}>{currentQuestion}/{totalQuestions}</Text>
-                <Progress.Bar color={purple}  progress={(currentQuestion + 1)/(totalQuestions + 1)} width={null}/>
+                <Text style={styles.progressText}>{currentQuestion + 1}/{totalQuestions}</Text>
+                <Progress.Bar color={color} progress={(currentQuestion + 1)/(totalQuestions)} width={null}/>
               </View>
               {questions.map((questionItem, index) =>(
                 <QuestionCard 
@@ -73,6 +73,7 @@ class Quiz extends Component {
                   show={currentQuestion === index}
                   questionItem={questionItem}
                   onNextQuestion={this.onNextQuestion}
+                  color={color}
                 />
               ))}
             </View>
@@ -87,13 +88,13 @@ class Quiz extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 30,
+    padding: 20,
   },
   progressContainer: {
     marginBottom: 25
   },
   progressText: {
-    color: purple,
+    color: black,
     fontSize: 18,
     lineHeight: 18
   }
