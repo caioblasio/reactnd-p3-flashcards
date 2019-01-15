@@ -37,7 +37,7 @@ class DeckView extends Component {
         </View>
         {questionCount > 0 && 
           <View style={styles.row}>
-            <SubmitBtn text="Start Quiz"></SubmitBtn>
+            <SubmitBtn onPress={() => navigation.navigate('Quiz', { index, deck })} text="Start Quiz"></SubmitBtn>
           </View>
         }
         <View style={styles.row}>
