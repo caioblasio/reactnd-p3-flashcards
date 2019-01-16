@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, StatusBar, ActivityIndicator } from 'react-native';
 import { Provider } from 'react-redux'
 import { store, persistor } from './store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Constants } from 'expo'
 import { purple, white, black } from './utils/colors'
+import { setLocalNotification, clearLocalNotification } from './utils/helpers'
 import MainNavigatorContainer from './routes'
 
 function FlashCardsStatusBar ({backgroundColor, ...props}) {
@@ -15,7 +16,11 @@ function FlashCardsStatusBar ({backgroundColor, ...props}) {
   )
 }
 
-export default class App extends React.Component {
+export default class App extends Component {
+
+  componentDidMount() {
+    setLocalNotification();
+  }
 
   renderLoading = () => {
     <View style={{flex: 1}}>

@@ -50,7 +50,7 @@ class NewDeck extends Component {
         </View>
         <View style={styles.row}>
           <TextButton onPress={this.submit} style={{backgroundColor: purple}}>
-            SUBMIT
+            Create Deck
           </TextButton>
         </View>
       </View>

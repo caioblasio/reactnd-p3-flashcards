@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { bgColors, black } from '../../utils/colors'
+import { clearLocalNotification, setLocalNotification } from '../../utils/helpers'
 import * as Progress from 'react-native-progress';
 import QuestionCard from './QuizComponents/QuestionCard'
 import QuizScore from './QuizComponents/QuizScore'
@@ -32,6 +33,15 @@ class Quiz extends Component {
     })
   }
 
+  componentDidUpdate(){
+    const { currentQuestion, totalQuestions } = this.state
+
+    if(currentQuestion === totalQuestions){
+      clearLocalNotification()
+        .then(setLocalNotification)
+    }
+  }
+
   onNextQuestion = (answer) => {
     this.setState((currentState) => ({
       correctAnswers: answer === 'correct' ? currentState.correctAnswers + 1 : currentState.correctAnswers,
@@ -50,6 +60,7 @@ class Quiz extends Component {
     const { questions, currentQuestion, totalQuestions, correctAnswers } = this.state
     const { navigation } = this.props
     const color = bgColors[navigation.state.params.index % 4]
+
     return(
       <View style={styles.container}>
         {currentQuestion === totalQuestions

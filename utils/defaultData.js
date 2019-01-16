@@ -1,6 +1,6 @@
 export const defaultDecks = [
     {
-      id: 'yskqx55q',
+      id: '47428623-bd73-498e-a4bc-536d20d031f4',
       title: 'React',
       questions: [
         {
@@ -10,61 +10,57 @@ export const defaultDecks = [
         {
           question: 'Where do you make Ajax requests in React?',
           answer: 'The componentDidMount lifecycle event'
-        },
-        {
-          question: 'How is React different?',
-          answer: 'React is a library focused on building UI components'
         }
       ]
     },
     {
-      id: 'k6qtv9fn',
+      id: 'e422aa77-184b-40fe-8e1d-362049175f26',
       title: 'Javascript',
       questions: [
         {
-          question: 'Can you assign a anonymous function to a variable?',
-          answer: 'Yes!'
+          question: 'What is Javascript?',
+          answer: 'It is a programming language used to make web pages interactive.'
         },
         {
-          question: 'Which of function of Array extracts a section of an array and returns a new array?',
-          answer: 'slice()'
+          question: 'Which Javascript function sorts an Array',
+          answer: 'The sort() method sorts the items of an array.'
         },
       ]
     },
     {
-      id: '8uc6bpfq',
+      id: '5e399e53-a1ce-47f3-8409-1f7e840ce510',
       title: 'Redux',
       questions: [
         {
           question: 'What is Redux?',
-          answer: 'Redux is a predictable state container for JavaScript apps'
+          answer: 'A predictable state container for JavaScript applications'
         },
         {
-          question: 'When should I use Redux?',
-          answer: 'Always 😀'
+          question: 'What are the 3 building parts of Redux?',
+          answer: 'Actions, Store and Reducers'
         },
         {
           question: 'Can Redux only be used with React?',
-          answer: 'Redux can be used as a data store for any UI layer'
+          answer: 'No, it can be used with any other JavaScript framework or library'
         }
       ]
     },
     {
-      id: '8220ftbc',
-      title: 'Udacity',
+      id: '2c7db296-0db4-4f0d-85ee-5a125bc769bc',
+      title: 'HTML',
       questions: [
         {
-          question: 'What are the prerequisites for this program?',
-          answer: 'HTML, CSS, JavaScript, Git, GitHub, NPM'
+          question: 'What is HTML',
+          answer: 'Hypertext Markup Language'
         },
         {
-          question: 'Is this program self-paced?',
-          answer: 'No'
+          question: 'When was HTML initial release',
+          answer: '1993'
         }
       ]
     },
     {
-      id: 'ci7mqpbe',
+      id: '5e399e53-a1ce-47f3-8409-1f7e840ce510',
       title: 'CSS',
       questions: [
         {
@@ -72,63 +68,22 @@ export const defaultDecks = [
           answer: 'Cascading Style Sheets'
         },
         {
-          question: 'What is CLASS selector?',
-          answer: 'Class selector is a "stand alone" class to which a specific style is declared'
+          question: 'Which CSS property changes the color of a text?',
+          answer: 'The color property'
         }
       ]
     },
     {
-      id: '18ao9pv2',
-      title: 'Ajax',
-      questions: [
-        {
-          question: 'Ajax meaning',
-          answer: 'Ajax (Asynchronous JavaScript And XML)'
-        },
-        {
-          question: 'AJAX has become very commonly used because',
-          answer: 'It allows page content to be updated without requiring a full page reload.'
-        },
-        {
-          question: 'Which statement about XML is false?',
-          answer: 'Every XML document must have a DOCTYPE tag'
-        },
-        {
-          question: 'The jQuery AJAX methods all require which parameter to be supplied?',
-          answer: 'url'
-        }
-      ]
-    },
-    {
-      id: 'm1pjots3',
-      title: 'Python',
-      questions: [],
-    },
-    {
-      id: 'e38zm81y',
-      title: 'Laravel',
-      questions: [
-        {
-          question: 'Artisan command to enable maintenance mode',
-          answer: 'artisan down'
-        },
-        {
-          question: 'Laravel helper method which name consists of only ONE letter?',
-          answer: 'x()'
-        }
-      ]
-    },
-    {
-      id: 'sojq71ko',
+      id: 'ff9d23cc-ee48-4f01-ac34-d5eb299bc1f2',
       title: 'React Native',
       questions: [
         {
-          question: 'Is every React developer also a React Native developer?',
-          answer: 'React developers are not React Native developers by default'
+          question: 'What is React Native',
+          answer: 'React Native lets you build mobile apps using only JavaScript.'
         },
         {
           question: 'Will my React Native app work on Web?',
-          answer: 'Unfortunately, no 😢'
+          answer: 'No'
         }
       ]
     },

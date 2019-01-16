@@ -17,7 +17,7 @@ class NewQuestion extends Component {
     return {
       title: 'New Question',
       headerStyle: {
-        backgroundColor: bgColors[index % 2],
+        backgroundColor: bgColors[index % 4],
       }
     }
   }
@@ -69,7 +69,7 @@ class NewQuestion extends Component {
         </View>
         <View style={styles.row}>
           <TextButton onPress={this.submit} style={{backgroundColor: bgColors[index % 4]}}>
-            SUBMIT
+            Create Card
           </TextButton>
         </View>
       </View>

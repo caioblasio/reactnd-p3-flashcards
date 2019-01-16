@@ -6,7 +6,7 @@ import { bgColors, white } from '../../utils/colors'
 
 class DeckList extends Component {
 
-  _keyExtractor = (item, index) => item.id
+  _keyExtractor = (item) => item.id
 
   _renderItem = ({item, index}) => {
     const { navigation } = this.props
