@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import { bgColors, black } from '../../utils/colors'
 import { clearLocalNotification, setLocalNotification } from '../../utils/helpers'
 import * as Progress from 'react-native-progress';
@@ -33,6 +33,7 @@ class Quiz extends Component {
     })
   }
 
+  //clear notifications if quiz is completed and set another for tomorrow
   componentDidUpdate(){
     const { currentQuestion, totalQuestions } = this.state
 

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-
 import { bgColors, white } from '../../utils/colors'
 
 class DeckList extends Component {

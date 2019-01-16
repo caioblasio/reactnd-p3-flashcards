@@ -11,11 +11,11 @@ $ yarn install
 $ yarn start
 ```
 
-The app was tested on iPhone 7 (Device) and iPhone XR (Emulator) using the expo app
+The app was made for iOS only and was tested on iPhone 7 (Device) and iPhone XR (Emulator) using the expo app
 
 ## Screenshots
 ### Deck List
-Shows all decks in a flat list
+Shows all decks in a flat list. You can also add a new deck
 
 ![deckList][deckList]
 ![newDeck][newDeck]
@@ -36,7 +36,7 @@ Once quiz is launched, you can flip the card to view the answer, swipe left to m
 [deckList]: https://raw.githubusercontent.com/caioblasio/reactnd-p3-flashcards/master/screenshots/deck_list.PNG "deckList"
 [newDeck]: https://raw.githubusercontent.com/caioblasio/reactnd-p3-flashcards/master/screenshots/new_deck.PNG "newDeck"
 [deckView]: https://raw.githubusercontent.com/caioblasio/reactnd-p3-flashcards/master/screenshots/deck_view.PNG "deckView"
-[newCard]: https://raw.githubusercontent.com/caioblasio/reactnd-p3-flashcards/master/screenshots/new_card.PNG "newCard"
+[newCard]: https://raw.githubusercontent.com/caioblasio/reactnd-p3-flashcards/master/screenshots/new_question.PNG "newCard"
 [quizFront]: https://raw.githubusercontent.com/caioblasio/reactnd-p3-flashcards/master/screenshots/quiz_front.PNG "quizFront"
 [quizBack]: https://raw.githubusercontent.com/caioblasio/reactnd-p3-flashcards/master/screenshots/quiz_back.PNG "quizBack"
 [quizResult]: https://raw.githubusercontent.com/caioblasio/reactnd-p3-flashcards/master/screenshots/quiz_result.PNG "quizResult"

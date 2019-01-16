@@ -4,8 +4,8 @@ import { Provider } from 'react-redux'
 import { store, persistor } from './store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Constants } from 'expo'
-import { purple, white, black } from './utils/colors'
-import { setLocalNotification, clearLocalNotification } from './utils/helpers'
+import { black } from './utils/colors'
+import { setLocalNotification } from './utils/helpers'
 import MainNavigatorContainer from './routes'
 
 function FlashCardsStatusBar ({backgroundColor, ...props}) {

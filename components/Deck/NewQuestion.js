@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { connect } from 'react-redux'
 import { addQuestion } from '../../actions/decks'
 import { bgColors, black } from '../../utils/colors'
